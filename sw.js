@@ -1,20 +1,4 @@
-const CACHE_NAME = "ftc-cache-v1";
-
-const urlsToCache = [
-  "/",
-  "/favicon.ico"
-];
-
-self.addEventListener("install", event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-self.addEventListener("fetch", event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
+self.addEventListener('fetch', event => {
+  // Service worker ini hanya perlu ada agar bisa di-install.
+  // Tidak ada fungsi offline untuk saat ini.
 });
